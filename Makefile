@@ -1,0 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
+#    Updated: 2022/09/19 11:02:57 by sle-huec         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = philo
+
+CC = cc
+CFLAGS = -MMD -Wall -Wextra -Werror -g -pthread
+
+SRCS = ${addprefix $(SRCS_PATH), \
+		philo.c \
+		}
+
+INCLUDE = -I./
+
+SRCS_PATH= ./srcs/
+OBJ_PATH = ./objs/
+
+OBJ = $(SRCS:$(SRCS_PATH)%.c=$(OBJ_PATH)%.o)
+DEP = $(SRCS:$(SRCS_PATH)%.c=$(OBJ_PATH)%.d)
+
+all: $(NAME)
+
+${NAME}: ${OBJS}
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+
+
+$(OBJ_PATH)%.o: $(SRCS_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+
+clean:
+	rm -rf ${OBJS} ${DEPS} build
+
+fclean: clean
+	rm -rf ${NAME}
+	rm -rf ${OBJ_PATH}
+
+re : fclean
+	make -C.
+	make all
+
+grind: ${NAME}
+		valgrind --track-fds=yes --leak-check=full -s ./philo
+	
+
+.PHONY: clean, fclean, re, grind
+
+-include ${DEPS}
