@@ -11,25 +11,36 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
 #include <pthread.h>
 
-int	ft_generate_philo(int nb_of_philo)
-{
+// int	ft_generate_philo(unsigned int nb_of_philo)
+// {
 
-}
+// }
 
-void	ft_philo(unsigned int nb_of_philo, unsigned int time_to_die,
-unsigned int time_to_eat, unsigned int time_to_sleep, unsigned int nb_of_meal)
-{
-	nb_of_philo = ft_generate_philo(nb_of_philo);
-	
-}
+// void	ft_philo(unsigned int nb_of_philo, unsigned int time_to_die,
+// unsigned int time_to_eat, unsigned int time_to_sleep, 
+//unsigned int nb_of_meal)
+// {
+// 	nb_of_philo = ft_generate_philo(nb_of_philo);
+// }
+
+// 
+
+
 
 int	main(int ac, char **av)
 {
-	if (ac >= 5)
-		ft_philo(ft_atoi(av[1]), ft_atoi(av[2]), ft_atoi(av[3]),
-			ft_atoi(av[4]), ft_atoi(av[5]));
+	if (ac > 6 || ac < 5)
+	{
+		printf("Usage error: you have to pass 4 or 5 numbers as arguments.\n");
+		return (-1);
+	}
+	if (ft_check_args(ac, av) == 0)
+		printf("totti va bene, can run the program.\n");
+		// ft_philo(ft_atoi(av[1]), ft_atoi(av[2]), ft_atoi(av[3]),
+		// 	ft_atoi(av[4]), ft_atoi(av[5]));
 	else
-		return (printf("Usage error: no arg or too much arg.\n"));
+		return (1);
 }

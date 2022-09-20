@@ -16,8 +16,9 @@ CC = cc
 CFLAGS = -MMD -Wall -Wextra -Werror -g -pthread
 
 SRCS = ${addprefix $(SRCS_PATH), \
-		philo.c \
-		}
+		utils_libft.c \
+		check_input.c \
+		philo.c}
 
 INCLUDE = -I./
 
@@ -29,7 +30,7 @@ DEP = $(SRCS:$(SRCS_PATH)%.c=$(OBJ_PATH)%.d)
 
 all: $(NAME)
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJ}
 	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
 
@@ -38,7 +39,7 @@ $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 clean:
-	rm -rf ${OBJS} ${DEPS} build
+	rm -rf ${OBJ} ${DEPS}
 
 fclean: clean
 	rm -rf ${NAME}
@@ -49,8 +50,7 @@ re : fclean
 	make all
 
 grind: ${NAME}
-		valgrind --track-fds=yes --leak-check=full -s ./philo
-	
+		valgrind --tool=helgrind --track-fds=yes --leak-check=full -s ./philo
 
 .PHONY: clean, fclean, re, grind
 

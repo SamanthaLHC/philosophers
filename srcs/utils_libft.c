@@ -12,27 +12,34 @@
 
 #include "philo.h"
 #include <unistd.h>
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+unsigned int	ft_atoi(const char *str)
 {
-	int	i = 0;
-	int result = 0;
-	int pos_or_neg = 1;
+	unsigned int	i;
+	unsigned int	result;
 
+	i = 0;
+	result = 0;
 	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\r'
-	 || str[i] == '\f')
-		i++;	
-	if (str[i] == '-')
-	{
-		pos_or_neg = -1;
+		|| str[i] == '\f')
 		i++;
-	}
+	if (str[i] == '-')
+		return (0);
 	else if (str[i] == '+')
 		i++;
-	while((str[i] && str[i] >= '0' && str[i] <= '9'))
+	while ((str[i] && str[i] >= '0' && str[i] <= '9'))
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	return (result * pos_or_neg);
+	return (result);
+}
+
+int	ft_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
