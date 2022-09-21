@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
+#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/19 11:02:57 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/09/21 16:36:20 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = cc
 CFLAGS = -MMD -Wall -Wextra -Werror -g -pthread
 
 SRCS = ${addprefix $(SRCS_PATH), \
+		handle_struct.c \
 		utils_libft.c \
 		check_input.c \
 		philo.c}

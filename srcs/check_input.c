@@ -1,18 +1,17 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 15:18:13 by sam               #+#    #+#             */
+/*   Updated: 2022/09/21 18:09:11 by sam              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 #include <stdio.h>
-
-int	ft_is_interpreted(char c)
-{
-	if (c == '/' || c == '=' || c == '*' || c == '<' || c == '/' || c == '$'
-		|| c == '>' || c == '!' || c == '#' || c == '&' || c == '[' || c == '['
-		|| c == '(' || c == ')')
-		return (1);
-	else
-		return (0);
-}
 
 int	ft_check_args(int ac, char **av)
 {
@@ -26,14 +25,14 @@ int	ft_check_args(int ac, char **av)
 		if (av[i][0] == '-')
 		{
 			printf("Usage error: you have to pass a positiv number.\n");
-			return (-1);
+			return (-2);
 		}
 		while (av[i][i_char])
 		{
-			if (!ft_isdigit(av[i][i_char]) || ft_is_interpreted(av[i][i_char]))
+			if (!ft_isdigit(av[i][i_char]))
 			{
 				printf("Usage error: only digits required.\n");
-				return (-1);
+				return (-2);
 			}
 			i_char++;
 		}

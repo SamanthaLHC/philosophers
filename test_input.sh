@@ -33,15 +33,3 @@ echo "\n"
 ./philo 11 +22 33 44 55
 ./philo _11 22 33 44 55
 echo "\n"
-
-echo INTERPRETED CHAR: SHOULD GIVE A "DIGIT REQUIRED"
-echo "\n"
-./philo =11 22 33 44 55
-./philo *11 22 33 44 55
-./philo [11 22 33 44 55
-./philo $11 22 33 44 55
-./philo !11 22 33 44 55
-./philo (11 22 33 44 55
-./philo <11 22 33 44 55
-
-echo "\n"

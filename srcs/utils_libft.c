@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_libft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:16:26 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/19 13:20:42 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:36:17 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 #include <unistd.h>
 #include <stdio.h>
 
-unsigned int	ft_atoi(const char *str)
+unsigned int	ft_atoi(char *str)
 {
 	unsigned int	i;
 	unsigned int	result;
 
+	if (str == NULL)
+		return (0);
 	i = 0;
 	result = 0;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\r'
-		|| str[i] == '\f')
+	while (str && (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' 
+		|| str[i] == '\r' || str[i] == '\f'))
 		i++;
 	if (str[i] == '-')
 		return (0);
