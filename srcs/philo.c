@@ -14,16 +14,17 @@
 #include <stdio.h>
 #include <pthread.h>
 
-// int	ft_generate_philo(unsigned int nb_of_philo)
+// void	start_routine()
 // {
 
 // }
 
 // void	ft_philo(unsigned int nb_of_philo, unsigned int time_to_die,
-// unsigned int time_to_eat, unsigned int time_to_sleep, 
+// unsigned int time_to_eat, unsigned int time_to_sleep,
 //unsigned int nb_of_meal)
 // {
-// 	nb_of_philo = ft_generate_philo(nb_of_philo);
+		pthread_t 
+
 // }
 
 // 
