@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/21 16:36:23 by sam              ###   ########.fr       */
+/*   Updated: 2022/09/22 15:22:08 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_thread_data
 	unsigned int		time_to_eat;
 	unsigned int		time_to_sleep;
 	unsigned int		nb_of_meal;
-	pthread_mutex_t		mutex_item;
+	pthread_mutex_t		*mutex_fork_arr;
 	pthread_t			*philosophe;
 
 } t_thread_data;

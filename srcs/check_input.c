@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:18:13 by sam               #+#    #+#             */
-/*   Updated: 2022/09/21 18:09:11 by sam              ###   ########.fr       */
+/*   Updated: 2022/09/22 13:55:45 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <stdio.h>
+
+
+   //         / \            //
+  //		 / | \          //
+ //         /  .  \        //
+//		   /_______\      //
+
+// NOT FINISH SHOULD CHECK IF ARG[1] > 0
 
 int	ft_check_args(int ac, char **av)
 {

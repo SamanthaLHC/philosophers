@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/09/21 18:02:07 by sam              ###   ########.fr       */
+/*   Updated: 2022/09/22 16:09:26 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,19 @@ int	ft_save_in_struct(unsigned int philo, unsigned int death,
 		th_data->time_to_sleep = sleep;
 		th_data->nb_of_meal = meal;
 		th_data->philosophe = malloc(sizeof(*th_data->philosophe) 
-			* (th_data->nb_of_philo + 1));
+			* (th_data->nb_of_philo));
 		if (!th_data->philosophe)
+			return (-15);
+		th_data->mutex_fork_arr = malloc(sizeof(pthread_mutex_t)
+			* (th_data->nb_of_philo));
+		if (!th_data->mutex_fork_arr)
 			return (-15);
 		return (0);
 }
+
+// a faire :
+
+// void	ft_free_clean_struct(t_thread_data *th_data)
+// {
+	  //DESTROY MUTEX
+// }

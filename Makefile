@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
+#    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/21 16:36:20 by sam              ###   ########.fr        #
+#    Updated: 2022/09/22 15:49:46 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ re : fclean
 	make all
 
 grind: ${NAME}
-		valgrind --tool=helgrind --track-fds=yes --leak-check=full -s ./philo
+		valgrind --tool=helgrind ./philo 4 1 1 1 1
 
 .PHONY: clean, fclean, re, grind
 
