@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/23 13:52:59 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:55:38 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	*ft_simulation(void *arg)
 	t_thread_data	*th_data;
 
 	th_data = (t_thread_data *) arg;
-	pthread_mutex_lock(th_data->mutex_fork_arr + 1);
-	printf("\"My precious fork, I don't want to share it.\"\n");
-	pthread_mutex_unlock(&th_data->mutex_fork_arr[1]);
+	printf("MUTEX PTR------> %p\n",th_data->mutex_fork_arr + th_data->i);
+	printf("in ft_simulation___ TH_DATA->i------> %d\n",th_data->i);
+	// pthread_mutex_lock(th_data->mutex_fork_arr + th_data->i);
+	// printf("\"fork number: %d \"\n", th_data->i);
+	// pthread_mutex_unlock(&th_data->mutex_fork_arr[th_data->i]);
 	return (NULL);
 }
 
@@ -33,7 +35,7 @@ int	ft_generate_fork(t_thread_data *th_data)
 	i = 0;
 	while (i < th_data->nb_of_philo)
 	{
-		printf("here generate fork\n");
+		printf("here generate fork %d\n", i + 1);
 		err = pthread_mutex_init(th_data->mutex_fork_arr + i, NULL);
 		if (err != 0)
 			printf("error in mutex init\n");
@@ -44,25 +46,32 @@ int	ft_generate_fork(t_thread_data *th_data)
 
 int	ft_philo(t_thread_data *th_data)
 {
-	th_data->i = 0;
-	while (th_data->i < th_data->nb_of_philo)
+	unsigned int	i;
+
+	i = 0;
+	while (i < th_data->nb_of_philo)
 	{
-		if (pthread_create(th_data->philosophe + th_data->i, NULL,
+		// printf("\"__in ft_philo:i = %d \"\n", th_data->i);
+		th_data->i = i;
+		if (pthread_create(th_data->philosophe + i, NULL,
 				&ft_simulation, th_data) != 0)
 			return (1);
-		printf("Philosophe '%u' is thinking.\n", th_data->i + 1);
-		th_data->i++;
+		else
+			printf("in ft_philo _____ i------> %d\n",i);
+		printf("Philosophe '%u' is thinking.\n", i + 1);
+		i++;
 	}
-	th_data->i = 0;
-	while (th_data->i < th_data->nb_of_philo)
+	i = 0;
+	while (i < th_data->nb_of_philo)
 	{
-		if (pthread_join(th_data->philosophe[th_data->i], NULL) != 0)
+		if (pthread_join(th_data->philosophe[i], NULL) != 0)
 			return (2);
+		printf ("WAIT FOR THREAD NUMBER: %d\n",i + 1);
 		// after a successfull join we have to free all the terminate 
 		// thread 's ressources if it is required
-		th_data->i++;
+		i++;
 	}
-	pthread_mutex_destroy(&th_data->mutex_fork_arr[th_data->i]);
+	pthread_mutex_destroy(&th_data->mutex_fork_arr[i]);
 	return (0);
 }
 
