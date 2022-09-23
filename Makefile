@@ -6,14 +6,14 @@
 #    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/22 15:49:46 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/09/23 11:20:06 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = cc
-CFLAGS = -MMD -Wall -Wextra -Werror -g -pthread
+CFLAGS = -MMD -Wall -Wextra -Werror -g3 -pthread
 
 SRCS = ${addprefix $(SRCS_PATH), \
 		handle_struct.c \
@@ -53,6 +53,12 @@ re : fclean
 grind: ${NAME}
 		valgrind --tool=helgrind ./philo 4 1 1 1 1
 
-.PHONY: clean, fclean, re, grind
+test: $(NAME)
+	./$(NAME) 5 800 200 200 7
+
+testp: $(NAME)
+		./test_input.sh
+
+.PHONY: clean fclean re grind test testp
 
 -include ${DEPS}

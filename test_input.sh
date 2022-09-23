@@ -9,6 +9,7 @@ echo "\n"
 echo "ARGS OK:"
 echo "\n"
 ./philo 1 2 3 4
+echo "\n"
 ./philo 1 2 3 4 5
 echo "\n"
 
@@ -19,6 +20,7 @@ echo "\n"
 ./philo 11 22 -33 44 55
 ./philo 11 22 33 -44 55
 ./philo 11 22 33 44 -55
+
 echo "\n"
 
 echo ONLY DIGITS REQUIRED

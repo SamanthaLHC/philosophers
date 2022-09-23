@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_libft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:16:26 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/21 16:36:17 by sam              ###   ########.fr       */
+/*   Updated: 2022/09/23 11:42:11 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ unsigned int	ft_atoi(char *str)
 		return (0);
 	i = 0;
 	result = 0;
-	while (str && (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' 
-		|| str[i] == '\r' || str[i] == '\f'))
+	while (str && (str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
+			|| str[i] == '\r' || str[i] == '\f'))
 		i++;
 	if (str[i] == '-')
 		return (0);
