@@ -3,16 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   handle_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/09/23 13:22:54 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:37:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+int	ft_generate_fork_and_philo(t_thread_data *th_data)
+{
+	unsigned int	i;
+	int				err;
+
+	i = 0;
+	while (i < th_data->nb_of_philo)
+	{
+		th_data->idx[i] = i;
+		err = pthread_mutex_init(th_data->mutex_fork_arr + i, NULL);
+		if (err != 0)
+			printf("error in mutex init\n");
+		if (pthread_create(th_data->philosophe + i, NULL,
+				&ft_simulation, th_data) != 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	ft_save_in_struct(int ac, char **av, t_thread_data	*th_data)
 {
@@ -31,6 +51,9 @@ int	ft_save_in_struct(int ac, char **av, t_thread_data	*th_data)
 	th_data->mutex_fork_arr = malloc(sizeof(pthread_mutex_t)
 			* (th_data->nb_of_philo));
 	if (!th_data->mutex_fork_arr)
+		return (-15);
+	th_data->idx = malloc(sizeof(int) * (th_data->nb_of_philo));
+	if (!th_data->idx)
 		return (-15);
 	return (0);
 }
