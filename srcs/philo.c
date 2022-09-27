@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/26 16:35:29 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/27 14:07:36 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,23 @@
 
 void	*ft_simulation(void *arg)
 {
-	t_set	*set_philo;
+	t_set			*set_philo;
+	pthread_mutex_t	fork;
+	pthread_mutex_t	fork2;
 
 	set_philo = (t_set *) arg;
-	pthread_mutex_lock(set_philo->data->mutex_fork_arr + set_philo->idx);
-	printf("\"fork %d\"\n", set_philo->idx + 1);
-	pthread_mutex_unlock(set_philo->data->mutex_fork_arr + set_philo->idx);
+	fork = *(set_philo->data->mutex_fork_arr + set_philo->idx);
+	fork2 = *(set_philo->data->mutex_fork_arr + set_philo->idx + 1);
+	if (pthread_mutex_lock(&fork) == 0)
+		printf("\"Philo %d take fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
+	if (pthread_mutex_lock(&fork2) == 0)
+		printf("\"Philo %d take fork %d\"\n", set_philo->idx + 1, set_philo->idx + 2);
+	if (pthread_mutex_unlock(&fork) == 0)
+		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
+	if (pthread_mutex_unlock(&fork2) == 0)
+		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 2);
+
+	// handle the last philo (which should take the first fork)
 	return (NULL);
 }
 
@@ -49,18 +60,19 @@ int	ft_generate_fork_and_philo(t_data *data)
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
 		else
-			printf("Philosophe '%u' is thinking...\n", i + 1);
+			printf("Philo '%u' is thinking...\n", i + 1);
 		i++;
 	}
-	i = 0;
-	while (i < data->nb_of_philo)
-	{
-		if (pthread_join(data->philosophe[i], NULL) != 0)
-			return (2);
-		printf ("philo '%d' finished.\n", i + 1);
-		i++;
-	}
-	pthread_mutex_destroy(&data->mutex_fork_arr[i]);
+	// fonction death, sleep idkn
+	// i = 0;
+	// while (i < data->nb_of_philo)
+	// {
+	// 	if (pthread_join(data->philosophe[i], NULL) != 0)
+	// 		return (2);
+	// 	printf ("philo '%d' finished.\n", i + 1);
+	// 	i++;
+	// }
+	// pthread_mutex_destroy(&data->mutex_fork_arr[i]);
 	return (0);
 }
 
