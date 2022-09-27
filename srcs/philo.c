@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/27 23:37:19 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/27 23:48:50 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ void	*ft_simulation(void *arg)
 		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 2);
 	if (pthread_mutex_unlock(&fork) == 0)
 		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
-
-	// handle the last philo (which should take the first fork) modulo nb_of_philo
-	// permet d avoir la bomnne fourkette
 	return (NULL);
 }
 
@@ -100,7 +97,8 @@ int	main(int ac, char **av)
 	{
 		if (ft_save_in_struct(ac, av, &data))
 			return (-15);
-		ft_generate_fork_and_philo(&data);
+		ft_generate_fork(&data);
+		ft_generate_philo(&data);
 	}
 	else
 		return (1);

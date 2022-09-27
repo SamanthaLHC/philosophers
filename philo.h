@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/26 15:23:52 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/27 23:44:59 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct s_set
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 void			*ft_simulation(void *arg);
-int				ft_generate_fork_and_philo(t_data *data);
+int				ft_generate_fork(t_data *data);
+int				ft_generate_philo(t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								check_input.c								  //
