@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/27 14:07:36 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/09/27 23:37:19 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,50 @@ void	*ft_simulation(void *arg)
 
 	set_philo = (t_set *) arg;
 	fork = *(set_philo->data->mutex_fork_arr + set_philo->idx);
-	fork2 = *(set_philo->data->mutex_fork_arr + set_philo->idx + 1);
+	fork2 = *(set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
+		% set_philo->data->nb_of_philo));
 	if (pthread_mutex_lock(&fork) == 0)
 		printf("\"Philo %d take fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
 	if (pthread_mutex_lock(&fork2) == 0)
 		printf("\"Philo %d take fork %d\"\n", set_philo->idx + 1, set_philo->idx + 2);
-	if (pthread_mutex_unlock(&fork) == 0)
-		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
 	if (pthread_mutex_unlock(&fork2) == 0)
 		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 2);
+	if (pthread_mutex_unlock(&fork) == 0)
+		printf("\"Philo %d leave fork %d\"\n", set_philo->idx + 1, set_philo->idx + 1);
 
-	// handle the last philo (which should take the first fork)
+	// handle the last philo (which should take the first fork) modulo nb_of_philo
+	// permet d avoir la bomnne fourkette
 	return (NULL);
 }
 
-int	ft_generate_fork_and_philo(t_data *data)
+int ft_generate_fork(t_data *data)
 {
 	unsigned int	i;
 	int				err;
+	
+	while (i < data->nb_of_philo)
+	{
+		err = pthread_mutex_init(data->mutex_fork_arr + i, NULL);
+		if (err != 0)
+			printf("error in mutex init\n");
+		i++;
+	}
+	return 0;
+}
+
+int	ft_generate_philo(t_data *data)
+{
+	unsigned int	i;
 	t_set			*arr_struct_settings;
 
 	i = 0;
-	arr_struct_settings = malloc(sizeof(*arr_struct_settings)
-			* data->nb_of_philo);
+	arr_struct_settings = malloc(sizeof(*arr_struct_settings) * data->nb_of_philo);
 	if (!arr_struct_settings)
 		return (15);
 	while (i < data->nb_of_philo)
 	{
 		(arr_struct_settings + i)->data = data;
 		(arr_struct_settings + i)->idx = i;
-		err = pthread_mutex_init(data->mutex_fork_arr
-				+ arr_struct_settings->idx, NULL);
-		if (err != 0)
-			printf("error in mutex init\n");
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
