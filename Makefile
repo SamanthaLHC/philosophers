@@ -6,7 +6,7 @@
 #    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/27 14:08:27 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/09/28 11:45:12 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = ${addprefix $(SRCS_PATH), \
 		handle_struct.c \
 		utils_libft.c \
 		check_input.c \
+		time.c \
 		philo.c}
 
 INCLUDE = -I./
