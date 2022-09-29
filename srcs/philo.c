@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/28 18:00:21 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:44:56 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-void	ft_takes_forks(pthread_t *fork, pthread_t *fork2, t_set *set_philo)
+void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2, t_set *set_philo)
 {
 		if (pthread_mutex_lock(fork) == 0)
 		{
@@ -29,7 +29,7 @@ void	ft_takes_forks(pthread_t *fork, pthread_t *fork2, t_set *set_philo)
 		}
 }
 
-void	ft_releases_forks(pthread_t *fork, pthread_t *fork2, t_set *set_philo)
+void	ft_releases_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2, t_set *set_philo)
 {
 		if (pthread_mutex_unlock(fork2) == 0)
 		{
@@ -51,18 +51,17 @@ void	*ft_simulation(void *arg)
 
 	set_philo = (t_set *) arg;
 	fork = *(set_philo->data->mutex_fork_arr + set_philo->idx);
-	// fork2 = *(set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
-	// 	% set_philo->data->nb_of_philo));
-	fork2 = *(set_philo->data->mutex_fork_arr + set_philo->idx + 1);
-	
-	// should i move this initialisation in top of main ? 
+	fork2 = *(set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
+		% set_philo->data->nb_of_philo));
 	ft_init_time(set_philo->data);
-	ft_takes_forks(&fork, &fork2, &set_philo);
-	// ft_time_to_eat(set_philo->data);
-	ft_releases_forks(&fork, &fork2, &set_philo);
+	ft_takes_forks(&fork, &fork2, set_philo);
+	if (ft_time_to_eat(set_philo) < 0)
+		return (NULL);
+	ft_releases_forks(&fork, &fork2, set_philo);
 	return (NULL);
 	// handle the last philo : should take the last fork and the first fork:
-	// --> Use modulo nb_of_philo ? 
+	// --> Use modulo nb_of_philo ?
+	//ATTENTION last philo take a non existent fork!!!
 }
 
 int ft_generate_fork(t_data *data)
