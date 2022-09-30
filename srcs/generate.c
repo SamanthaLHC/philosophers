@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/30 15:59:06 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:25:45 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int	ft_generate_philo(t_data *data)
 	{
 		if (pthread_join(data->philosophe[i], NULL) != 0)
 			return (2);
-		ft_print_key_moment(data);
-		printf ("philo %d finished.\n", i + 1);
+		printf ("%-7u Philo %d finished.\n", ft_get_key_moment(data), i + 1);
 		i++;
 	}
 	pthread_mutex_destroy(&data->mutex_fork_arr[i]);

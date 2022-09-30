@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/30 16:18:03 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:08:27 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				ft_save_in_struct(int ac, char **av, t_data *data);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 void			ft_init_time(t_data *data);
-void			ft_print_key_moment(t_data *data);
+unsigned int	ft_get_key_moment(t_data *data);
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
 

@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/09/26 14:50:00 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:25:04 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	ft_save_in_struct(int ac, char **av, t_data *data)
 
 // void	ft_free_clean_struct(t_set *th_data)
 // {
-	  //DESTROY MUTEX
+		//DESTROY MUTEX
 // }

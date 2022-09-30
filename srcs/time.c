@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/30 16:13:53 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:17:07 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ unsigned int	ft_current_time(void)
 	return (time);
 }
 
-void	ft_print_key_moment(t_data *data)
+unsigned int	ft_get_key_moment(t_data *data)
 {
 	unsigned int	key_moment;
 
 	key_moment = ft_current_time() - data->start_time;
-	printf("%-7u", key_moment);
+	return (key_moment);
 }
 
 int	ft_time_to_eat(t_set *set_philo)
@@ -48,8 +48,8 @@ int	ft_time_to_eat(t_set *set_philo)
 	unsigned int	meal_duration;
 
 	meal_duration = set_philo->data->time_to_eat * 1000;
-	ft_print_key_moment(set_philo->data);
-	printf("Philo %d is eating\n", set_philo->idx + 1);
+	printf("%-7u Philo %d is eating\n", ft_get_key_moment(set_philo->data),
+		set_philo->idx + 1);
 	if (usleep(meal_duration) < 0)
 		return (-1);
 	return (0);
@@ -60,8 +60,8 @@ int	ft_time_to_sleep(t_set *set_philo)
 	unsigned int	nap_time;
 
 	nap_time = set_philo->data->time_to_sleep * 1000;
-	ft_print_key_moment(set_philo->data);
-	printf("Philo %d is sleeping\n", set_philo->idx + 1);
+	printf("%-7u Philo %d is sleeping\n", ft_get_key_moment(set_philo->data),
+		set_philo->idx + 1);
 	if (usleep(nap_time) < 0)
 		return (-1);
 	return (0);

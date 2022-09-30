@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/09/30 16:08:40 by samantha         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:23:27 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 {
 	if (pthread_mutex_lock(fork) == 0)
 	{
-		ft_print_key_moment(set_philo->data);
-		printf("Philo %d takes fork %d\n", set_philo->idx + 1,
+		printf("%-7u Philo %d has taken fork %d\n",
+			ft_get_key_moment(set_philo->data), set_philo->idx + 1,
 			set_philo->idx + 1);
 	}
 	if (pthread_mutex_lock(fork2) == 0)
 	{
-		ft_print_key_moment(set_philo->data);
-		printf("Philo %d takes fork %d\n", set_philo->idx + 1,
+		printf("%-7u Philo %d has taken fork %d\n",
+			ft_get_key_moment(set_philo->data), set_philo->idx + 1,
 			(set_philo->idx + 1) % set_philo->data->nb_of_philo + 1);
 	}
 }
@@ -37,14 +37,14 @@ void	ft_releases_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 {
 	if (pthread_mutex_unlock(fork2) == 0)
 	{
-		ft_print_key_moment(set_philo->data);
-		printf("Philo %d released fork %d\n", set_philo->idx + 1,
+		printf("%-7u Philo %d released fork %d\n",
+			ft_get_key_moment(set_philo->data), set_philo->idx + 1,
 			(set_philo->idx + 1) % set_philo->data->nb_of_philo + 1);
 	}
 	if (pthread_mutex_unlock(fork) == 0)
 	{
-		ft_print_key_moment(set_philo->data);
-		printf("Philo %d released fork %d\n", set_philo->idx + 1,
+		printf("%-7u Philo %d released fork %d\n",
+			ft_get_key_moment(set_philo->data), set_philo->idx + 1,
 			set_philo->idx + 1);
 	}
 }
