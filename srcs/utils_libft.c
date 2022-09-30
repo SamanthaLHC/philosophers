@@ -45,3 +45,5 @@ int	ft_isdigit(char c)
 	else
 		return (0);
 }
+
+// prendre le max entre le result de mon ope et 1

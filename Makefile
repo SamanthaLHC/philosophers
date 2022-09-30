@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
+#    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/29 12:50:42 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/09/30 15:52:43 by samantha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ SRCS = ${addprefix $(SRCS_PATH), \
 		handle_struct.c \
 		utils_libft.c \
 		check_input.c \
+		routine.c \
 		time.c \
-		philo.c}
+		generate.c}
 
 INCLUDE = -I./
 
@@ -55,7 +56,7 @@ grind: ${NAME}
 		valgrind --tool=helgrind ./philo 3 1 1 1 1
 
 test: $(NAME)
-	./$(NAME) 2 800 200 200 7
+	./$(NAME) 4 800 200 200 7
 
 testp: $(NAME)
 		./test_input.sh
