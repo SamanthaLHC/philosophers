@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/30 18:08:27 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:46:15 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_set
 {
 	unsigned int	idx;
 	unsigned int	count_meal;
+	unsigned int	start_meal;
+	int				death_flag;
 	t_data			*data;
 }	t_set;
 

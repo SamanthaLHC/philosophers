@@ -6,7 +6,7 @@
 #    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/09/30 18:31:07 by samantha         ###   ########.fr        #
+#    Updated: 2022/10/03 00:47:27 by samantha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = ${addprefix $(SRCS_PATH), \
 		handle_struct.c \
 		utils_libft.c \
 		check_input.c \
+		death.c \
 		routine.c \
 		time.c \
 		generate.c}
