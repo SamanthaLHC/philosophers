@@ -6,13 +6,6 @@ echo "\n"
 ./philo 1 2 3 4 5 6 7
 echo "\n"
 
-echo "ARGS OK:"
-echo "\n"
-./philo 1 2 3 4
-echo "\n"
-./philo 1 2 3 4 5
-echo "\n"
-
 echo PASS A POSITIV NUMBER:
 echo "\n"
 
