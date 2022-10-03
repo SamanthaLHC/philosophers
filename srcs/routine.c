@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/01 17:21:01 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:16:26 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,14 @@ void	*ft_simulation(void *arg)
 	pthread_mutex_t	*fork2;
 
 	set_philo = (t_set *) arg;
+	ft_init_start_meal_arr(set_philo);
+	printf("start meal : %d, Philo : \n", set_philo->data->start_meal[set_philo->idx + 1]);
 	fork = set_philo->data->mutex_fork_arr + set_philo->idx;
 	fork2 = set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
 			% set_philo->data->nb_of_philo);
 	launch_philo(fork, fork2, set_philo, 0);
 	launch_philo(fork, fork2, set_philo, 1);
+	//measure time without eating
+	// trigger death if the conditions meets
 	return (NULL);
 }

@@ -3,24 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:56:46 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/01 17:30:04 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:18:22 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <stdio.h>
 
+// save the start time of the meal in struct with key moment
+// set the count_meal variable (stoppp the simulation if n meal)
 
-int	ft_save_start_meal()
+void	ft_init_start_meal_arr(t_set *set_philo)
 {
-	// save the start time of the meal in struct with key moment
+	unsigned int	i;
+
+	i = 0;
+	while (i < set_philo->data->nb_of_philo)
+	{
+		set_philo->data->start_meal[i] = -5;
+		i++;
+	}
 }
 
-int	ft_time_to_die(t_set *set_philo)
+void	ft_save_start_meal(t_set *set_philo)
 {
-	
-	// print die
+	int	i;
+
+	i = 0;
+	while (i < set_philo->data->nb_of_philo)
+	{
+		set_philo->data->start_meal =
+				ft_get_key_moment(set_philo->data->start_meal
+				+ set_philo->idx);
+		i++;
+	}
+	// idem: faire un tableau de count_meal
+	// set_philo->count_meal = set_philo->count_meal + 1;
 }
+
+//measure the time spend by the philo without eating anything
+//  set the deat_flag variable ?
+// and check if the time without meal passed
+// int	ft_check_time_after_meal(t_set *set_philo)
+// {
+// }
+
+//if the time is passed the philo shoud die
+
+// void	ft_trigger_the_death(t_set *set_philo)
+// {	
+// }
+
+// set the format of time to die and print the death message
+// int	ft_time_to_die(t_set *set_philo)
+// {	
+// }
+
+
+// check if the philo is dead or not: condition for joining
+// int	ft_is_dead(t_set *set_philo)
+// {
+// }

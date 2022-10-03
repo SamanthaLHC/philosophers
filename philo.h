@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/01 17:46:15 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:41:29 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_data
 	unsigned int	time_to_sleep;
 	unsigned int	nb_of_meal;
 	unsigned int	start_time;
+	int				*start_meal;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
 }	t_data;
@@ -29,11 +30,30 @@ typedef struct s_data
 typedef struct s_set
 {
 	unsigned int	idx;
-	unsigned int	count_meal;
-	unsigned int	start_meal;
 	int				death_flag;
+	int				*count_meal;
 	t_data			*data;
 }	t_set;
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//								utils_libft.c								  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+int				ft_isdigit(char c);
+unsigned int	ft_atoi(char *str);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//								check_input.c								  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+int				ft_check_args(int ac, char **av);
+int				ft_is_interpreted(char c);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//								handle_struct.c								  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+int				ft_save_in_struct(int ac, char **av, t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								generate.c (main)							  //
@@ -49,26 +69,6 @@ int				ft_generate_philo(t_data *data);
 void			*ft_simulation(void *arg);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//								check_input.c								  //
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
-int				ft_check_args(int ac, char **av);
-int				ft_is_interpreted(char c);
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//								utils_libft.c								  //
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
-int				ft_isdigit(char c);
-unsigned int	ft_atoi(char *str);
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//								handle_struct.c								  //
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
-int				ft_save_in_struct(int ac, char **av, t_data *data);
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								time.c										  //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
@@ -76,5 +76,12 @@ void			ft_init_time(t_data *data);
 unsigned int	ft_get_key_moment(t_data *data);
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//							death.c											  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+void			ft_init_start_meal_arr(t_set *set_philo);
+void			ft_save_start_meal(t_set *set_philo);
 
 #endif
