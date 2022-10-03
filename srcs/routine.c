@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/03 15:16:26 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:17:47 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*ft_simulation(void *arg)
 
 	set_philo = (t_set *) arg;
 	ft_init_start_meal_arr(set_philo);
-	printf("start meal : %d, Philo : \n", set_philo->data->start_meal[set_philo->idx + 1]);
+	// printf("start meal : %d, Philo : \n", set_philo->data->start_meal[set_philo->idx + 1]);
 	fork = set_philo->data->mutex_fork_arr + set_philo->idx;
 	fork2 = set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
 			% set_philo->data->nb_of_philo);

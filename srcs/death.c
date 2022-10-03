@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:56:46 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/03 15:18:22 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:15:11 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,19 @@ void	ft_init_start_meal_arr(t_set *set_philo)
 	i = 0;
 	while (i < set_philo->data->nb_of_philo)
 	{
-		set_philo->data->start_meal[i] = -5;
+		set_philo->data->start_meal[i] = 0;
 		i++;
 	}
 }
 
 void	ft_save_start_meal(t_set *set_philo)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < set_philo->data->nb_of_philo)
 	{
-		set_philo->data->start_meal =
-				ft_get_key_moment(set_philo->data->start_meal
-				+ set_philo->idx);
+		set_philo->data->start_meal[set_philo->idx] = ft_get_key_moment(set_philo->data);
 		i++;
 	}
 	// idem: faire un tableau de count_meal

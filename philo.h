@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/03 14:41:29 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:06:19 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_data
 	unsigned int	time_to_sleep;
 	unsigned int	nb_of_meal;
 	unsigned int	start_time;
-	int				*start_meal;
+	unsigned int	*start_meal;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
 }	t_data;
@@ -31,7 +31,7 @@ typedef struct s_set
 {
 	unsigned int	idx;
 	int				death_flag;
-	int				*count_meal;
+	unsigned int	*count_meal;
 	t_data			*data;
 }	t_set;
 
