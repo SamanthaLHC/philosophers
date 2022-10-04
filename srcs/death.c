@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:56:46 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/04 21:03:55 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:06:19 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	ft_calculate_lifespan_left(t_set *set_philo)
 {
 	int	lifespan_left;
 	int	time_limit_before_death;
-
-	// printf("start meal before calculate lifespan: %d for philo %d\n",
-			//  set_philo->start_meal, set_philo->idx + 1);
 
 	time_limit_before_death = set_philo->data->time_to_die;
 	if (set_philo->start_meal < 0)
