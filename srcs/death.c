@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:56:46 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/04 15:23:36 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:03:55 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,6 @@
 #include <stdio.h>
 
 //one condition leading to the death: no meal.
-void	ft_init_start_meal_arr(t_set *set_philo)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (i < set_philo->data->nb_of_philo)
-	{
-		set_philo->data->start_meal[i] = -5;
-		i++;
-	}
-}
-
-void	ft_save_start_meal(t_set *set_philo)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (i < set_philo->data->nb_of_philo)
-	{
-		set_philo->data
-			->start_meal[set_philo->idx] = ft_get_key_moment(set_philo->data);
-		i++;
-	}
-	// idem: faire un tableau de count_meal
-	// set_philo->count_meal = set_philo->count_meal + 1;
-}
 
 int	ft_calculate_lifespan_left(t_set *set_philo)
 {
@@ -47,16 +21,13 @@ int	ft_calculate_lifespan_left(t_set *set_philo)
 	int	time_limit_before_death;
 
 	// printf("start meal before calculate lifespan: %d for philo %d\n",
-			// set_philo->data->start_meal[set_philo->idx] + 1, set_philo->idx + 1);
+			//  set_philo->start_meal, set_philo->idx + 1);
 
 	time_limit_before_death = set_philo->data->time_to_die;
-	if (set_philo->data->start_meal[set_philo->idx] < 0)
+	if (set_philo->start_meal < 0)
 		lifespan_left = time_limit_before_death;
 	else
-	{
-		lifespan_left = time_limit_before_death
-			- set_philo->data->start_meal[set_philo->idx];
-	}
+		lifespan_left = time_limit_before_death - set_philo->start_meal;
 	printf("TIME BEFORE DEATH for PHILO %d should be: %d\n", set_philo->idx + 1, lifespan_left);
 	return (lifespan_left);
 }

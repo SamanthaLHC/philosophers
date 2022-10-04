@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/10/04 15:40:28 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:47:48 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,11 @@ int	ft_init_thread_and_mutex_arrays(t_data *data)
 		return (-15);
 }
 
-int	ft_save_philo_data_in_array(t_data *data)
-{
-	data->start_meal = malloc(sizeof(*data->start_meal)
-			* (data->nb_of_philo));
-	if (!data->start_meal)
-		return (-15);
-	data->lifespan_left = malloc(sizeof(*data->lifespan_left)
-			* (data->nb_of_philo));
-	if (!data->lifespan_left)
-		return (-15);
-	return (0);
-}
-
 int	ft_save_in_struct(int ac, char **av, t_data *data)
 {
 	if (ft_save_arg_in_struct(ac, av, data) < 0)
 		return (-15);
 	if (ft_init_thread_and_mutex_arrays(data) < 0)
-		return (-15);
-	if (ft_save_philo_data_in_array(data) < 0)
 		return (-15);
 	return (0);
 }

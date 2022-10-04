@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/01 17:02:03 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:54:20 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	ft_generate_philo(t_data *data)
 	{
 		(arr_struct_settings + i)->data = data;
 		(arr_struct_settings + i)->idx = i;
+		(arr_struct_settings + i)->start_meal = -5;
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);

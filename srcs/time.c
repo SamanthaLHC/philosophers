@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/04 15:02:44 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:59:25 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	ft_time_to_eat(t_set *set_philo)
 	meal_duration = set_philo->data->time_to_eat * 1000;
 	printf("%-7d Philo %d is eating\n", ft_get_key_moment(set_philo->data),
 		set_philo->idx + 1);
-	ft_save_start_meal(set_philo);
-	printf("start meal :%d Philo : %d\n", set_philo->data->start_meal[set_philo->idx], set_philo->idx +1);
+	set_philo->start_meal = ft_get_key_moment(set_philo->data);
+	printf("start meal :%d Philo : %d\n", set_philo->start_meal, set_philo->idx +1);
 	if (usleep(meal_duration) < 0)
 		return (-1);
 	return (0);
