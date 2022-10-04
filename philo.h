@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/04 10:51:12 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:39:56 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ typedef struct s_data
 	unsigned int	time_to_sleep;
 	unsigned int	nb_of_meal;
 	int				start_time;
+	int				*fork;
 	int				*start_meal;
-	unsigned int	fork;
+	int				*lifespan_left;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
 }	t_data;
@@ -31,8 +32,6 @@ typedef struct s_data
 typedef struct s_set
 {
 	unsigned int	idx;
-	int				death_flag;
-	unsigned int	*count_meal;
 	t_data			*data;
 }	t_set;
 
@@ -84,6 +83,6 @@ int				ft_time_to_sleep(t_set *set_philo);
 
 void			ft_init_start_meal_arr(t_set *set_philo);
 void			ft_save_start_meal(t_set *set_philo);
-int				ft_check_time_after_meal(t_set *set_philo);
+int				ft_calculate_lifespan_left(t_set *set_philo);
 
 #endif

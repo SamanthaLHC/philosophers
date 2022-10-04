@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/04 10:54:23 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:02:44 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_get_key_moment(t_data *data)
 	key_moment = key_moment - data->start_time;
 	return (key_moment);
 }
+
+//the three functions below,set the time format and print
 
 int	ft_time_to_eat(t_set *set_philo)
 {

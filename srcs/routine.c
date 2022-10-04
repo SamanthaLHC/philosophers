@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/04 10:51:43 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:03:16 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		ft_takes_forks(fork, fork2, set_philo);
 		if (ft_time_to_eat(set_philo) < 0)
 			return ;
-		
-		ft_check_time_after_meal(set_philo);
+		ft_calculate_lifespan_left(set_philo);
 
 		ft_releases_forks(fork, fork2, set_philo);
 	}
@@ -74,7 +73,8 @@ void	*ft_simulation(void *arg)
 
 	set_philo = (t_set *) arg;
 	ft_init_start_meal_arr(set_philo);
-	// printf("start meal : %d, Philo : \n", set_philo->data->start_meal[set_philo->idx + 1]);
+	// printf("start meal arr init: %d for philo %d\n",
+			// set_philo->data->start_meal[set_philo->idx] + 1, set_philo->idx + 1);
 	fork = set_philo->data->mutex_fork_arr + set_philo->idx;
 	fork2 = set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
 			% set_philo->data->nb_of_philo);
