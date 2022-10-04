@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/03 17:33:58 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/04 10:51:12 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_data
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
 	unsigned int	nb_of_meal;
-	unsigned int	start_time;
-	unsigned int	*start_meal;
+	int				start_time;
+	int				*start_meal;
 	unsigned int	fork;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
@@ -74,7 +74,7 @@ void			*ft_simulation(void *arg);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 void			ft_init_time(t_data *data);
-unsigned int	ft_get_key_moment(t_data *data);
+int				ft_get_key_moment(t_data *data);
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
 
@@ -84,5 +84,6 @@ int				ft_time_to_sleep(t_set *set_philo);
 
 void			ft_init_start_meal_arr(t_set *set_philo);
 void			ft_save_start_meal(t_set *set_philo);
+int				ft_check_time_after_meal(t_set *set_philo);
 
 #endif
