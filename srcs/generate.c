@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/04 20:54:20 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/05 23:46:20 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int	ft_generate_philo(t_data *data)
 	{
 		(arr_struct_settings + i)->data = data;
 		(arr_struct_settings + i)->idx = i;
-		(arr_struct_settings + i)->start_meal = -5;
+		(arr_struct_settings + i)->start_meal = -1;
+
+		printf("start meal INIT %d for philo %d\n",
+			(arr_struct_settings + i)->start_meal,
+			(arr_struct_settings + i)->idx + 1);
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
@@ -57,7 +61,7 @@ int	ft_generate_philo(t_data *data)
 	{
 		if (pthread_join(data->philosophe[i], NULL) != 0)
 			return (2);
-		printf ("%-7u Philo %d finished.\n", ft_get_key_moment(data), i + 1);
+		printf ("%u Philo %d finished.\n", ft_get_key_moment(data), i + 1);
 		i++;
 	}
 	pthread_mutex_destroy(&data->mutex_fork_arr[i]);

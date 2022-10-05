@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/04 20:46:51 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/05 23:36:10 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 typedef struct s_set
 {
 	unsigned int	idx;
+	unsigned int	count_meal;
 	int				start_meal;
 	int				lifespan_left;
 	t_data			*data;
@@ -81,8 +82,6 @@ int				ft_time_to_sleep(t_set *set_philo);
 //							death.c											  //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-void			ft_init_start_meal_arr(t_set *set_philo);
-void			ft_save_start_meal(t_set *set_philo);
-int				ft_calculate_lifespan_left(t_set *set_philo);
+// int				ft_calculate_lifespan_left(t_set *set_philo);
 
 #endif
