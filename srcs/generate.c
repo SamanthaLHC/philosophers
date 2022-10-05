@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/05 23:46:20 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/05 23:54:35 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ int	ft_generate_philo(t_data *data)
 		(arr_struct_settings + i)->data = data;
 		(arr_struct_settings + i)->idx = i;
 		(arr_struct_settings + i)->start_meal = -1;
-
-		printf("start meal INIT %d for philo %d\n",
-			(arr_struct_settings + i)->start_meal,
-			(arr_struct_settings + i)->idx + 1);
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
