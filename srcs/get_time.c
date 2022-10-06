@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/05 18:54:24 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:26:05 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,25 @@ int	ft_get_key_moment(t_data *data)
 	return (key_moment);
 }
 
-//the three functions below,set the time format and print
-
-int	ft_time_to_eat(t_set *set_philo)
+int	ft_usleep(t_set *set_philo, int waiting_time)
 {
-	int	meal_duration;
+	int	split_time;
+	int	count_each_usleep;
 
-	meal_duration = set_philo->data->time_to_eat * 1000;
-	set_philo->start_meal = ft_get_key_moment(set_philo->data);
-	printf("%d %d is eating\n", ft_get_key_moment(set_philo->data),
-		set_philo->idx + 1);
-	if (usleep(meal_duration) < 0)
-		return (-1);
-	printf("start meal :%d Philo : %d\n", set_philo->start_meal,
-		set_philo->idx +1);
-	printf("TIME BEFORE DEATH for PHILO %d should be: %d\n",
-		set_philo->idx + 1, set_philo->lifespan_left);
+	split_time = waiting_time / 5000;
+	count_each_usleep = 0;
+	
+
+	while (count_each_usleep < split_time)
+	{
+
+		if (!ft_is_dead(set_philo))
+		{
+			usleep(5000);
+			count_each_usleep++;
+		}
+		else
+			return (-4);
+	}
 	return (0);
 }
-
-int	ft_time_to_sleep(t_set *set_philo)
-{
-	int	nap_time;
-
-	nap_time = set_philo->data->time_to_sleep * 1000;
-	printf("%d %d is sleeping\n", ft_get_key_moment(set_philo->data),
-		set_philo->idx + 1);
-	if (usleep(nap_time) < 0)
-		return (-1);
-	return (0);
-}
-

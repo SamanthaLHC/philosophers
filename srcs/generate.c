@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/05 23:54:35 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:33:02 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-int	ft_generate_fork(t_data *data)
+int	ft_generate_mutex_fork(t_data *data)
 {
 	unsigned int	i;
 	int				err;
@@ -46,6 +46,7 @@ int	ft_generate_philo(t_data *data)
 		(arr_struct_settings + i)->data = data;
 		(arr_struct_settings + i)->idx = i;
 		(arr_struct_settings + i)->start_meal = -1;
+		(arr_struct_settings + i)->deathline = data->time_to_die;
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
@@ -78,7 +79,7 @@ int	main(int ac, char **av)
 		if (ft_save_in_struct(ac, av, &data))
 			return (-15);
 		ft_init_time(&data);
-		ft_generate_fork(&data);
+		ft_generate_mutex_fork(&data);
 		ft_generate_philo(&data);
 		// HERE: call a function free_tabs_and_destroy_mutex
 	}

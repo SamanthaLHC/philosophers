@@ -6,7 +6,7 @@
 #    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/05 22:29:28 by samantha         ###   ########.fr        #
+#    Updated: 2022/10/06 14:02:26 by samantha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCS = ${addprefix $(SRCS_PATH), \
 		handle_struct.c \
 		utils_libft.c \
 		check_input.c \
-		death.c \
 		routine.c \
-		time.c \
+		get_time.c \
+		key_moment.c \
 		generate.c}
 
 INCLUDE = -I./
@@ -57,7 +57,7 @@ grind: ${NAME}
 		valgrind --tool=helgrind ./philo 3 1 1 1 1
 
 test: $(NAME)
-	./$(NAME) 2 410 200 200 7
+	./$(NAME) 2 300 200 200 7
 
 testp: $(NAME)
 		./test_input.sh

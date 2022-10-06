@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/10/04 20:47:48 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 12:12:00 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	ft_save_in_struct(int ac, char **av, t_data *data)
 		return (-15);
 	return (0);
 }
-
 
 // a faire :
 

@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/05 23:36:10 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:56:20 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_set
 	unsigned int	idx;
 	unsigned int	count_meal;
 	int				start_meal;
-	int				lifespan_left;
+	int				deathline;
 	t_data			*data;
 }	t_set;
 
@@ -48,7 +48,6 @@ unsigned int	ft_atoi(char *str);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 int				ft_check_args(int ac, char **av);
-int				ft_is_interpreted(char c);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								handle_struct.c								  //
@@ -70,18 +69,19 @@ int				ft_generate_philo(t_data *data);
 void			*ft_simulation(void *arg);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//								time.c										  //
+//							get_time.c										  //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 void			ft_init_time(t_data *data);
 int				ft_get_key_moment(t_data *data);
+int				ft_usleep(t_set *set_philo, int waiting_time);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//						key_moment.c										  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//							death.c											  //
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
-// int				ft_calculate_lifespan_left(t_set *set_philo);
+int				ft_is_dead(t_set *set_philo);
 
 #endif
