@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 15:26:05 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:03:37 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ int	ft_get_key_moment(t_data *data)
 int	ft_usleep(t_set *set_philo, int waiting_time)
 {
 	int	split_time;
+	int	last_time;
 	int	count_each_usleep;
 
 	split_time = waiting_time / 5000;
+	last_time = waiting_time % 5000;
 	count_each_usleep = 0;
-	
-
 	while (count_each_usleep < split_time)
 	{
-
-		if (!ft_is_dead(set_philo))
-		{
-			usleep(5000);
-			count_each_usleep++;
-		}
-		else
+		if (ft_is_dead(set_philo))
 			return (-4);
+		usleep(5000);
+		count_each_usleep++;
 	}
+	if (ft_is_dead(set_philo))
+		return (-4);
+	if (last_time > 0)
+		usleep(last_time);
 	return (0);
 }

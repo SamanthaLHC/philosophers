@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/06 15:27:50 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:46:34 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+
+
+// TODO: 
+// 1) créer une struc FORK avec le mutex associé à un flag
+// 2) un while avec le check du flag (check si possede la fork)puis unlock
+// deux flags dans le while chacun protégé par leur mutex.
+// 3) ft_usleep pour checker la mort pendant l'aquisition des deux forks
+
+//DEATH_FLAG
+// idem flag fork
+// les autres thread doivent checker le deathflag s'il est set, return
+
 
 void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
@@ -39,14 +51,8 @@ void	ft_releases_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
 	(void) set_philo;
-	// printf("%-7d Philo %d is releasing fork %d\n",
-	// 	ft_get_key_moment(set_philo->data), set_philo->idx + 1,
-	// 	(set_philo->idx + 1) % set_philo->data->nb_of_philo + 1);
 	if (pthread_mutex_unlock(fork2) != 0)
 		return ;
-	// printf("%-7d Philo %d is releasing fork %d\n",
-	// 	ft_get_key_moment(set_philo->data), set_philo->idx + 1,
-	// 	set_philo->idx + 1);
 	if (pthread_mutex_unlock(fork) != 0)
 		return ;
 }
@@ -94,11 +100,6 @@ void	*ft_simulation(void *arg)
 		printf("%d %d died\n", ft_get_key_moment(set_philo->data),
 			set_philo->idx + 1);
 		// free everything
-		return (NULL);
-	}
-	else if (launch_philo(fork, fork2, set_philo) == -2)
-	{
-		//free everything
 		return (NULL);
 	}
 	return (NULL);

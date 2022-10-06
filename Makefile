@@ -6,7 +6,7 @@
 #    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/06 14:02:26 by samantha         ###   ########.fr        #
+#    Updated: 2022/10/06 19:32:52 by samantha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ grind: ${NAME}
 		valgrind --tool=helgrind ./philo 3 1 1 1 1
 
 test: $(NAME)
-	./$(NAME) 2 300 200 200 7
+	./$(NAME) 4 400 200 200 7
 
 testp: $(NAME)
 		./test_input.sh

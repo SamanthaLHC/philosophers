@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 14:56:20 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:49:32 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,17 @@ typedef struct s_data
 	unsigned int	time_to_sleep;
 	unsigned int	nb_of_meal;
 	int				start_time;
-	int				*fork;
-	pthread_mutex_t	*mutex_fork_arr;
+	int				death_flag;
+	pthread_mutex_t	death_lock;
 	pthread_t		*philosophe;
 }	t_data;
+
+typedef struct s_fork
+{
+		pthread_mutex_t	mutex_fork_arr;
+		int				fork;
+
+} t_fork;
 
 typedef struct s_set
 {
@@ -42,6 +49,9 @@ typedef struct s_set
 
 int				ft_isdigit(char c);
 unsigned int	ft_atoi(char *str);
+void			ft_free_arr_int(int **tab);
+void			ft_free_arr_mutex(pthread_mutex_t **tab);
+void			ft_free_arr_thread(pthread_t **tab);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								check_input.c								  //

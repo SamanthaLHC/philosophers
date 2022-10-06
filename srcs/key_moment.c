@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:55:34 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/06 15:26:37 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:07:58 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ int	ft_time_to_sleep(t_set *set_philo)
 int	ft_is_dead(t_set *set_philo)
 {
 	if (ft_get_key_moment(set_philo->data) >= set_philo->deathline)
+	{
+
+		set_philo->data->death_flag = 1;
 		return (1);
+	}
 	else
 		return (0);
 }

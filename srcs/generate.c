@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 15:33:02 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:25:29 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ int	ft_generate_mutex_fork(t_data *data)
 	return (0);
 }
 
+int	ft_join(t_data *data)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < data->nb_of_philo)
+	{
+		if (pthread_join(data->philosophe[i], NULL) != 0)
+			return (2);
+		i++;
+	}
+	pthread_mutex_destroy(&data->mutex_fork_arr[i]);
+	return (0);
+}
+
 int	ft_generate_philo(t_data *data)
 {
 	unsigned int	i;
@@ -47,21 +62,13 @@ int	ft_generate_philo(t_data *data)
 		(arr_struct_settings + i)->idx = i;
 		(arr_struct_settings + i)->start_meal = -1;
 		(arr_struct_settings + i)->deathline = data->time_to_die;
+		data->death_flag = 0;
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
 		i++;
 	}
-	// move join thread in anothor func
-	i = 0;
-	while (i < data->nb_of_philo)
-	{
-		if (pthread_join(data->philosophe[i], NULL) != 0)
-			return (2);
-		printf ("%u Philo %d finished.\n", ft_get_key_moment(data), i + 1);
-		i++;
-	}
-	pthread_mutex_destroy(&data->mutex_fork_arr[i]);
+	ft_join(data);
 	return (0);
 }
 
@@ -81,7 +88,6 @@ int	main(int ac, char **av)
 		ft_init_time(&data);
 		ft_generate_mutex_fork(&data);
 		ft_generate_philo(&data);
-		// HERE: call a function free_tabs_and_destroy_mutex
 	}
 	else
 		return (1);

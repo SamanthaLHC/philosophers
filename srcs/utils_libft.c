@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:16:26 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/09/26 10:43:00 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:09:22 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,3 @@ int	ft_isdigit(char c)
 	else
 		return (0);
 }
-
-// prendre le max entre le result de mon ope et 1
