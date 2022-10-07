@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 19:49:32 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:49:58 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,10 @@ typedef struct s_data
 	int				start_time;
 	int				death_flag;
 	pthread_mutex_t	death_lock;
+	int				*fork;
+	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
 }	t_data;
-
-typedef struct s_fork
-{
-		pthread_mutex_t	mutex_fork_arr;
-		int				fork;
-
-} t_fork;
 
 typedef struct s_set
 {
