@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 18:25:29 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:19:18 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ int	ft_generate_mutex_fork(t_data *data)
 		err = pthread_mutex_init(data->mutex_fork_arr + i, NULL);
 		if (err != 0)
 			printf("error in mutex init\n");
+		i++;
+	}
+	return (0);
+}
+
+int	ft_init_fork_flag(t_data *data)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < data->nb_of_philo)
+	{
+		data->fork_available[i] = 1;
+		printf("fork flag arr : %d at index : %d\n", data->fork_available[i],
+			i);
 		i++;
 	}
 	return (0);
@@ -86,6 +101,7 @@ int	main(int ac, char **av)
 		if (ft_save_in_struct(ac, av, &data))
 			return (-15);
 		ft_init_time(&data);
+		ft_init_fork_flag(&data);
 		ft_generate_mutex_fork(&data);
 		ft_generate_philo(&data);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/06 19:46:34 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:29:37 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,17 @@
 void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
-	// while (!ft_is_dead(set_philo))
-	// {
+	while (!ft_is_dead(set_philo))
+	{
 		if (pthread_mutex_lock(fork) == 0)
 		{
-			printf("%d %d has taken a fork (%d)\n",
-				ft_get_key_moment(set_philo->data), set_philo->idx + 1,
-				set_philo->idx + 1);
+			if (set_philo->data->fork_available + set_philo->idx)
+			{
+				printf("%d %d has taken a fork (%d)\n",
+					ft_get_key_moment(set_philo->data), set_philo->idx + 1,
+					set_philo->idx + 1);
+				set_philo->data->fork_available[set_philo->idx] = 0;
+			}
 		}
 		if (pthread_mutex_lock(fork2) == 0)
 		{
@@ -44,7 +48,7 @@ void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 				ft_get_key_moment(set_philo->data), set_philo->idx + 1,
 				(set_philo->idx + 1) % set_philo->data->nb_of_philo + 1);
 		}
-	// }
+	}
 }
 
 void	ft_releases_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
@@ -57,8 +61,6 @@ void	ft_releases_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		return ;
 }
 
-// -4 ->is dead
-// -2 -> usleep error
 int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {

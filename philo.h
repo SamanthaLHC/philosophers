@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/07 14:49:58 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:00:26 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_data
 	int				start_time;
 	int				death_flag;
 	pthread_mutex_t	death_lock;
-	int				*fork;
+	int				*fork_available;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;
 }	t_data;
@@ -65,6 +65,7 @@ int				ft_save_in_struct(int ac, char **av, t_data *data);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 int				ft_generate_fork(t_data *data);
+int				ft_init_fork_flag(t_data *data);
 int				ft_generate_philo(t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
