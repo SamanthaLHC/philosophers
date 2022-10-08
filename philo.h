@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 12:47:31 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 14:22:01 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,19 @@ int				ft_save_in_struct(int ac, char **av, t_data *data);
 int				ft_generate_fork(t_data *data);
 int				ft_init_fork_flag(t_data *data);
 int				ft_generate_philo(t_data *data);
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//								fork.c										  //
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+void			ft_releases_fork(pthread_mutex_t *fork, t_set *set_philo);
+void			ft_releases_fork2(pthread_mutex_t *fork2, t_set *set_philo);
+void			ft_releases_both_fork(pthread_mutex_t *fork,
+					pthread_mutex_t *fork2, t_set *set_philo);
+int				take_first_fork(int i_have_the_fork, pthread_mutex_t *fork,
+					t_set *set_philo);
+int				take_second_fork(int i_have_the_fork2, pthread_mutex_t *fork2,
+					t_set *set_philo);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								routine.c									  //

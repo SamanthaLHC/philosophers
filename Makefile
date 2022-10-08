@@ -6,7 +6,7 @@
 #    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/08 12:47:55 by samantha         ###   ########.fr        #
+#    Updated: 2022/10/08 14:16:52 by samantha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = ${addprefix $(SRCS_PATH), \
 		handle_mutexes.c \
 		utils_libft.c \
 		check_input.c \
+		fork.c \
 		routine.c \
 		get_time.c \
 		key_moment.c \
