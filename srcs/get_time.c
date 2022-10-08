@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 19:03:37 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:35:18 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	ft_usleep(t_set *set_philo, int waiting_time)
 
 	split_time = waiting_time / 5000;
 	last_time = waiting_time % 5000;
+	// printf("Philo %i: split_time: %d, last_time: %d\n", set_philo->idx+1, split_time, last_time);
+
 	count_each_usleep = 0;
 	while (count_each_usleep < split_time)
 	{

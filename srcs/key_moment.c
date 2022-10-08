@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:55:34 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/06 19:07:58 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:35:35 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int	ft_time_to_eat(t_set *set_philo)
 	meal_duration = set_philo->data->time_to_eat * 1000;
 	set_philo->start_meal = ft_get_key_moment(set_philo->data);
 	set_philo->deathline = set_philo->start_meal + set_philo->data->time_to_die;
-	printf("%d %d is eating\n", ft_get_key_moment(set_philo->data),
+	// printf("start meal :%d Philo : %d\n", set_philo->start_meal,
+	// 	set_philo->idx +1);
+	// printf("DEATH TIME :%d for Philo : %d\n", set_philo->deathline,
+	// 	set_philo->idx +1);
+	printf("%d %d is eating\n", set_philo->start_meal,
 		set_philo->idx + 1);
 	if (ft_usleep(set_philo, meal_duration) == -4)
 		return (-4);
-	printf("start meal :%d Philo : %d\n", set_philo->start_meal,
-		set_philo->idx +1);
-	printf("DEATH TIME :%d for Philo : %d\n", set_philo->deathline,
-		set_philo->idx +1);
+	// printf("finished eating at : %d\n", ft_get_key_moment(set_philo->data));
 	return (0);
 }
 
