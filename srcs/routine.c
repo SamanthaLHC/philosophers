@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/08 11:36:01 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:55:01 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-
-// TODO: 
-// 2) un while avec le check du flag (check si possede la fork)puis unlock
-// deux flags dans le while chacun protégé par leur mutex.
-// 3) ft_usleep pour checker la mort pendant l'aquisition des deux forks
-
 //DEATH_FLAG
 // idem flag fork
 // les autres thread doivent checker le deathflag s'il est set, return
 
 
+// vérifier 
 void	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
