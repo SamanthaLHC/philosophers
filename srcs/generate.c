@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/07 15:19:18 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/08 13:17:04 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	ft_init_fork_flag(t_data *data)
 	while (i < data->nb_of_philo)
 	{
 		data->fork_available[i] = 1;
-		printf("fork flag arr : %d at index : %d\n", data->fork_available[i],
-			i);
 		i++;
 	}
 	return (0);
@@ -102,8 +100,10 @@ int	main(int ac, char **av)
 			return (-15);
 		ft_init_time(&data);
 		ft_init_fork_flag(&data);
+		ft_init_mutexes(&data);
 		ft_generate_mutex_fork(&data);
 		ft_generate_philo(&data);
+		ft_destroy_mutexes(&data);
 	}
 	else
 		return (1);

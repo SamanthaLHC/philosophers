@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 11:35:18 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:32:39 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include "philo.h"
 
-// Save in struct the time at the programme's start
 void	ft_init_time(t_data *data)
 {
 	struct timeval	cur_time;
@@ -24,7 +23,6 @@ void	ft_init_time(t_data *data)
 	data->start_time = cur_time.tv_sec * 1000 + cur_time.tv_usec / 1000;
 }
 
-// get time at the keys actions's moments.
 int	ft_get_key_moment(t_data *data)
 {
 	struct timeval	cur_time;
@@ -44,8 +42,6 @@ int	ft_usleep(t_set *set_philo, int waiting_time)
 
 	split_time = waiting_time / 5000;
 	last_time = waiting_time % 5000;
-	// printf("Philo %i: split_time: %d, last_time: %d\n", set_philo->idx+1, split_time, last_time);
-
 	count_each_usleep = 0;
 	while (count_each_usleep < split_time)
 	{

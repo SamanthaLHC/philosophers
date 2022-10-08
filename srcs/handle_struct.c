@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/10/07 15:20:03 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:33:05 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ int	ft_save_in_struct(int ac, char **av, t_data *data)
 		return (-15);
 	return (0);
 }
-

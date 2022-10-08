@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 10:39:54 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:47:31 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ int				ft_usleep(t_set *set_philo, int waiting_time);
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
 int				ft_is_dead(t_set *set_philo);
+
+void			ft_init_mutexes(t_data *data);
+void			ft_destroy_mutexes(t_data *data);
 
 #endif
