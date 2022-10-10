@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/10 17:29:28 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 18:14:59 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,12 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
 	int				even_flag;
-	unsigned int	tmp;
 
-	pthread_mutex_lock(&set_philo->data->meal_mutex);
-	tmp = set_philo->data->ate_enough;
-	pthread_mutex_unlock(&set_philo->data->meal_mutex);
 	even_flag = set_philo->idx % 2;
-	while (!ft_is_dead(set_philo) && tmp < set_philo->data->nb_of_philo)
+	while (!ft_is_dead(set_philo)
+		&& (set_philo->data->nb_of_meal == 0
+			|| ft_lock_meal(set_philo) < set_philo->data->nb_of_philo))
 	{
-
-		printf("ATE ENOUGH = %d\n", set_philo->data->ate_enough);
-		printf(" true or not : %d\n", set_philo->data->ate_enough != set_philo->data->nb_of_philo);
 		if (even_flag)
 		{
 			if (ft_takes_forks(fork, fork2, set_philo) == 1)
@@ -62,9 +57,6 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 				ft_releases_both_fork(fork, fork2, set_philo);
 				return (-4);
 			}
-			pthread_mutex_lock(&set_philo->data->meal_mutex);
-			tmp = set_philo->data->ate_enough;
-			pthread_mutex_unlock(&set_philo->data->meal_mutex);
 			ft_releases_both_fork(fork, fork2, set_philo);
 		}
 		if (ft_time_to_sleep(set_philo) == -4)
