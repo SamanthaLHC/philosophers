@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 14:22:01 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:31:00 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_data
 	int				start_time;
 	int				death_flag;
 	pthread_mutex_t	death_lock;
+	unsigned int	ate_enough;
+	pthread_mutex_t	meal_mutex;
 	int				*fork_available;
 	pthread_mutex_t	*mutex_fork_arr;
 	pthread_t		*philosophe;

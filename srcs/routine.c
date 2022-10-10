@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/08 14:17:57 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:53:58 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 	int	even_flag;
 
 	even_flag = set_philo->idx % 2;
-	while (1)
+	while (!ft_is_dead(set_philo) || set_philo->data->ate_enough
+		!= set_philo->data->nb_of_meal)
 	{
 		if (even_flag)
 		{
@@ -57,12 +58,20 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 			}
 			ft_releases_both_fork(fork, fork2, set_philo);
 		}
+		printf("ATE ENOUGH = %d\n", set_philo->data->ate_enough);
 		if (ft_time_to_sleep(set_philo) == -4)
 			return (-4);
 		even_flag = 1;
 	}
 	return (0);
 }
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+// PROBLEM TO FIX :
+//  quand ate_enough atteint le nb attendu le prog ne quitte pas,  why ??
+// affichage après la mort dans certaines conditions is sleeping
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 void	*ft_simulation(void *arg)
 {
