@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:06:08 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 13:35:37 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 18:43:19 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_usleep(t_set *set_philo, int waiting_time)
 	time_left = wake_up_time - ft_get_key_moment(set_philo->data);
 	while (time_left > 0)
 	{
-		if (ft_is_dead(set_philo))
+		if (ft_is_dead(set_philo) && (set_philo->data->nb_of_meal == 0
+				|| ft_lock_meal(set_philo) < set_philo->data->nb_of_philo))
 			return (-4);
 		if (time_left >= 5)
 			usleep(5000);
@@ -51,7 +52,8 @@ int	ft_usleep(t_set *set_philo, int waiting_time)
 			usleep(time_left * 1000);
 		time_left = wake_up_time - ft_get_key_moment(set_philo->data);
 	}
-	if (ft_is_dead(set_philo))
+	if (ft_is_dead(set_philo) && (set_philo->data->nb_of_meal == 0
+			|| ft_lock_meal(set_philo) < set_philo->data->nb_of_philo))
 		return (-4);
 	return (0);
 }
