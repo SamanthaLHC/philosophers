@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:55:34 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/10 11:52:55 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:09:17 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ int	ft_is_nb_of_meals_reached(t_set *set_philo)
 		set_philo->data->ate_enough = set_philo->data->ate_enough + 1;
 		pthread_mutex_unlock(&set_philo->data->meal_mutex);
 	}
-	if (set_philo->data->ate_enough >= set_philo->data->nb_of_philo)
-		return (1);
+	pthread_mutex_lock(&set_philo->data->meal_mutex);
+	{
+		if (set_philo->data->ate_enough >= set_philo->data->nb_of_philo)
+			return (1);
+	}
+	pthread_mutex_lock(&set_philo->data->meal_mutex);
 	return (0);
 }
 
