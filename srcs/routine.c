@@ -6,7 +6,7 @@
 /*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/10 17:26:53 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:28:22 by samantha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 	while (!ft_is_dead(set_philo) && set_philo->data->ate_enough
 		< set_philo->data->nb_of_philo)
 	{
-		printf(" true or not : %d\n", set_philo->data->ate_enough != set_philo->data->nb_of_philo);
 		printf("ATE ENOUGH = %d\n", set_philo->data->ate_enough);
+		printf(" true or not : %d\n", set_philo->data->ate_enough != set_philo->data->nb_of_philo);
 		if (even_flag)
 		{
 			if (ft_takes_forks(fork, fork2, set_philo) == 1)
