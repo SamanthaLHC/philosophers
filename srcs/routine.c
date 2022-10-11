@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/11 11:29:32 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:36:35 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,6 @@ void	*ft_simulation(void *arg)
 	fork2 = set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
 			% set_philo->data->nb_of_philo);
 	if (launch_philo(fork, fork2, set_philo) == -4)
-	{
-		// ft_free_and_destroy(set_philo->data);
 		return (NULL);
-	}
-	// ft_free_and_destroy(set_philo->data);
 	return (NULL);
 }
