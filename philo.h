@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/11 11:13:22 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:45:55 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int				ft_check_args(int ac, char **av);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 int				ft_save_in_struct(int ac, char **av, t_data *data);
-void	ft_free_and_destroy(t_data *data);
+void			ft_free_and_destroy(t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								generate.c (main)							  //
@@ -70,6 +70,8 @@ void	ft_free_and_destroy(t_data *data);
 int				ft_generate_fork(t_data *data);
 int				ft_init_fork_flag(t_data *data);
 int				ft_generate_philo(t_data *data);
+void			ft_init_settings_philo(t_set *arr_struct_settings, t_data *data,
+					unsigned int i);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								fork.c										  //
@@ -105,6 +107,7 @@ int				ft_usleep(t_set *set_philo, int waiting_time);
 int				ft_time_to_eat(t_set *set_philo);
 int				ft_time_to_sleep(t_set *set_philo);
 int				ft_is_dead(t_set *set_philo);
+int				ft_think(t_set *set_philo);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								handle_mutexes.c							  //

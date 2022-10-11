@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/11 14:45:31 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:28:18 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 				return (-4);
 			}
 			ft_releases_both_fork(fork, fork2, set_philo);
+			if (ft_think(set_philo) == -4)
+				return (-4);
 		}
 		if (ft_time_to_sleep(set_philo) == -4)
 			return (-4);
@@ -76,6 +78,7 @@ void	*ft_simulation(void *arg)
 	fork = set_philo->data->mutex_fork_arr + set_philo->idx;
 	fork2 = set_philo->data->mutex_fork_arr + ((set_philo->idx + 1)
 			% set_philo->data->nb_of_philo);
+	set_philo->count_meal = 0;
 	if (launch_philo(fork, fork2, set_philo) == -4)
 		return (NULL);
 	return (NULL);

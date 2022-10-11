@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:55:34 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/11 14:07:29 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:59:25 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,14 @@ int	ft_time_to_sleep(t_set *set_philo)
 	return (0);
 }
 
-void	ft_think(t_set *set_philo)
+int	ft_think(t_set *set_philo)
 {
+	if (ft_is_dead(set_philo) && (set_philo->data->nb_of_meal == 0
+			|| ft_lock_meal(set_philo) < set_philo->data->nb_of_philo))
+		return (-4);
 	printf("%d %d is thinking\n", ft_get_key_moment(set_philo->data),
 		set_philo->idx + 1);
+	return (0);
 }
 
 int	ft_is_dead(t_set *set_philo)
