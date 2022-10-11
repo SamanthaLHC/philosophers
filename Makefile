@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: samantha <samantha@student.42.fr>          +#+  +:+       +#+         #
+#    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/10 18:15:19 by samantha         ###   ########.fr        #
+#    Updated: 2022/10/11 11:33:58 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,22 @@ re : fclean
 	make all
 
 grind: ${NAME}
-		valgrind --tool=helgrind ./philo 3 1 1 1 1
+		valgrind --tool=helgrind ./philo 4 800 200 200 7
 
 test: $(NAME)
 	./$(NAME) 4 800 200 200 7
+	
+test1: $(NAME)
+	./$(NAME) 5 800 200 200
+	
+test2: $(NAME)
+	./$(NAME) 3 610 200 100
+
+test3: $(NAME)
+	./$(NAME) 2 400 210 100
+
+test4: $(NAME)
+	./$(NAME) 1 800 200 200
 
 testp: $(NAME)
 		./test_input.sh

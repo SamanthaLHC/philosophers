@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/10 18:14:07 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:13:22 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int				ft_check_args(int ac, char **av);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 int				ft_save_in_struct(int ac, char **av, t_data *data);
+void	ft_free_and_destroy(t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								generate.c (main)							  //
@@ -111,6 +112,5 @@ int				ft_is_dead(t_set *set_philo);
 void			ft_init_mutexes(t_data *data);
 void			ft_destroy_mutexes(t_data *data);
 unsigned int	ft_lock_meal(t_set *set_philo);
-
 
 #endif

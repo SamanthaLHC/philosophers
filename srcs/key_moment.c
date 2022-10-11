@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_moment.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:55:34 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/10 15:58:54 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:08:59 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "philo.h"
-
 
 int	ft_is_nb_of_meals_reached(t_set *set_philo)
 {
@@ -47,7 +46,6 @@ int	ft_time_to_eat(t_set *set_philo)
 		set_philo->idx + 1);
 	set_philo->count_meal = set_philo->count_meal + 1;
 	ft_is_nb_of_meals_reached(set_philo);
-	printf("philo %d: count meal reach : %d\n", set_philo->idx + 1, set_philo->count_meal);
 	if (ft_usleep(set_philo, meal_duration) == -4)
 		return (-4);
 	return (0);

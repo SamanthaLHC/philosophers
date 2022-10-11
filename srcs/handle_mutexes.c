@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mutexes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:20:41 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/10 18:12:49 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:33:08 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void	ft_init_mutexes(t_data *data)
 
 void	ft_destroy_mutexes(t_data *data)
 {
+	unsigned int	i;
+
+	i = 0;
 	pthread_mutex_destroy(&data->meal_mutex);
 	pthread_mutex_destroy(&data->death_lock);
+	while (i < data->nb_of_philo)
+	{
+		pthread_mutex_destroy(&data->mutex_fork_arr[i]);
+		i++;
+	}
 }

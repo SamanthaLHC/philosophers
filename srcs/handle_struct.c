@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_struct.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/10/08 12:33:05 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:11:09 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,12 @@ int	ft_save_in_struct(int ac, char **av, t_data *data)
 	if (ft_init_thread_and_mutex_arrays(data) < 0)
 		return (-15);
 	return (0);
+}
+
+void	ft_free_and_destroy(t_data *data)
+{
+	free(data->philosophe);
+	free(data->mutex_fork_arr);
+	free(data->fork_available);
+	ft_destroy_mutexes(data);
 }

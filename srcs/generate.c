@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/08 13:17:04 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:32:05 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_join(t_data *data)
 			return (2);
 		i++;
 	}
-	pthread_mutex_destroy(&data->mutex_fork_arr[i]);
 	return (0);
 }
 
@@ -75,7 +74,9 @@ int	ft_generate_philo(t_data *data)
 		(arr_struct_settings + i)->idx = i;
 		(arr_struct_settings + i)->start_meal = -1;
 		(arr_struct_settings + i)->deathline = data->time_to_die;
+		pthread_mutex_lock(&data->death_lock);
 		data->death_flag = 0;
+		pthread_mutex_unlock(&data->death_lock);
 		if (pthread_create(data->philosophe
 				+ i, NULL, &ft_simulation, &arr_struct_settings[i]) != 0)
 			return (1);
@@ -103,8 +104,11 @@ int	main(int ac, char **av)
 		ft_init_mutexes(&data);
 		ft_generate_mutex_fork(&data);
 		ft_generate_philo(&data);
-		ft_destroy_mutexes(&data);
+		ft_free_and_destroy(&data);
 	}
 	else
+	{
+		ft_free_and_destroy(&data);
 		return (1);
+	}
 }
