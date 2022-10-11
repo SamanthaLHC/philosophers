@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/11 11:32:05 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:41:58 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	main(int ac, char **av)
 		if (ft_save_in_struct(ac, av, &data))
 			return (-15);
 		ft_init_time(&data);
+		data.ate_enough = 0;
 		ft_init_fork_flag(&data);
 		ft_init_mutexes(&data);
 		ft_generate_mutex_fork(&data);

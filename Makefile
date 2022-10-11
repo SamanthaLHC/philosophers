@@ -6,7 +6,7 @@
 #    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/11 11:37:35 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/10/11 14:09:16 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,10 @@ re : fclean
 	make all
 
 hellgrind: ${NAME}
-		valgrind --tool=helgrind ./philo 4 800 200 200 7
+		valgrind --tool=helgrind ./philo 4 800 200 200
 
 valgrind: ${NAME}
-		valgrind ./philo 4 800 200 200 7
+		valgrind ./philo 4 800 200 200
 
 test: $(NAME)
 	./$(NAME) 4 800 200 200 7
