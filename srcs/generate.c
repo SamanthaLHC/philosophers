@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:03:51 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/12 10:31:15 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 13:29:50 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,5 @@ int	main(int ac, char **av)
 		ft_free_and_destroy(&data);
 	}
 	else
-	{
-		ft_free_and_destroy(&data);
 		return (1);
-	}
 }
