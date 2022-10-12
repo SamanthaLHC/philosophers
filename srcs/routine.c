@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/11 15:28:18 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:09:33 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,32 @@ int	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
-	int				even_flag;
+	int	even_flag;
+	int	meal_duration;
 
+	meal_duration = set_philo->data->time_to_eat * 1000;
 	even_flag = set_philo->idx % 2;
 	while (!ft_is_dead(set_philo)
 		&& (set_philo->data->nb_of_meal == 0
 			|| ft_lock_meal(set_philo) < set_philo->data->nb_of_philo))
 	{
+		if (ft_think(set_philo) == -4)
+			return (-4);
 		if (even_flag)
 		{
-			if (ft_takes_forks(fork, fork2, set_philo) == 1)
-				return (-4);
-			if (ft_time_to_eat(set_philo) == -4)
-			{
-				ft_releases_both_fork(fork, fork2, set_philo);
-				return (-4);
-			}
-			ft_releases_both_fork(fork, fork2, set_philo);
-			if (ft_think(set_philo) == -4)
-				return (-4);
+			ft_usleep(set_philo, meal_duration);
+			even_flag = 0;
 		}
+		if (ft_takes_forks(fork, fork2, set_philo) == 1)
+			return (-4);
+		if (ft_time_to_eat(set_philo) == -4)
+		{
+			ft_releases_both_fork(fork, fork2, set_philo);
+			return (-4);
+		}
+		ft_releases_both_fork(fork, fork2, set_philo);
 		if (ft_time_to_sleep(set_philo) == -4)
 			return (-4);
-		even_flag = 1;
 	}
 	return (0);
 }

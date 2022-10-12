@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:51:44 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/11 15:45:55 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 10:40:30 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data
 	int				start_time;
 	int				death_flag;
 	pthread_mutex_t	death_lock;
+	pthread_mutex_t	test_mutex;
 	unsigned int	ate_enough;
 	pthread_mutex_t	meal_mutex;
 	int				*fork_available;
@@ -62,6 +63,7 @@ int				ft_check_args(int ac, char **av);
 
 int				ft_save_in_struct(int ac, char **av, t_data *data);
 void			ft_free_and_destroy(t_data *data);
+void			ft_init_prog(t_data *data);
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 //								generate.c (main)							  //

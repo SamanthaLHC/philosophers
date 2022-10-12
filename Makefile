@@ -6,7 +6,7 @@
 #    By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/16 15:05:57 by sle-huec          #+#    #+#              #
-#    Updated: 2022/10/11 14:09:16 by sle-huec         ###   ########.fr        #
+#    Updated: 2022/10/12 11:14:14 by sle-huec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,8 +55,8 @@ re : fclean
 	make -C.
 	make all
 
-hellgrind: ${NAME}
-		valgrind --tool=helgrind ./philo 4 800 200 200
+helgrind: ${NAME}
+		valgrind --tool=helgrind ./philo 4 610 200 100
 
 valgrind: ${NAME}
 		valgrind ./philo 4 800 200 200

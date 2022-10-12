@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils_libft.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samantha <samantha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:16:26 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/06 17:09:22 by samantha         ###   ########.fr       */
+/*   Updated: 2022/10/12 10:29:20 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 unsigned int	ft_atoi(char *str)
 {
@@ -44,4 +45,12 @@ int	ft_isdigit(char c)
 		return (1);
 	else
 		return (0);
+}
+
+void	ft_free_and_destroy(t_data *data)
+{
+	free(data->philosophe);
+	free(data->mutex_fork_arr);
+	free(data->fork_available);
+	ft_destroy_mutexes(data);
 }

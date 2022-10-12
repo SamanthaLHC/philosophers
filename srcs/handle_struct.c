@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:05:38 by sam               #+#    #+#             */
-/*   Updated: 2022/10/11 15:45:27 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 10:28:03 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,10 @@ void	ft_init_settings_philo(t_set *arr_struct_settings, t_data *data,
 	arr_struct_settings->count_meal = 0;
 }
 
-void	ft_free_and_destroy(t_data *data)
+void ft_init_prog(t_data *data)
 {
-	unsigned int	i;
-
-	i = 0;
-	free(data->philosophe);
-	free(data->mutex_fork_arr);
-	free(data->fork_available);
-	ft_destroy_mutexes(data);
+		data->ate_enough = 0;
+		ft_init_time(data);
+		ft_init_fork_flag(data);
+		ft_init_mutexes(data);
 }
