@@ -1,0 +1,6 @@
+objs/
+.vscode/
+*.o
+*.a
+*.d
+philo

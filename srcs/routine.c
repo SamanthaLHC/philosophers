@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:26:00 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/12 11:09:33 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:49:04 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ int	ft_takes_forks(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 	return (is_dead);
 }
 
+int	ft_break(int even_flag, t_set *set_philo, int meal_duration)
+{
+	if (even_flag)
+	{
+		ft_usleep(set_philo, meal_duration);
+		even_flag = 0;
+	}
+	return (even_flag);
+}
+
 int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 		t_set *set_philo)
 {
@@ -52,11 +62,7 @@ int	launch_philo(pthread_mutex_t *fork, pthread_mutex_t *fork2,
 	{
 		if (ft_think(set_philo) == -4)
 			return (-4);
-		if (even_flag)
-		{
-			ft_usleep(set_philo, meal_duration);
-			even_flag = 0;
-		}
+		even_flag = ft_break(even_flag, set_philo, meal_duration);
 		if (ft_takes_forks(fork, fork2, set_philo) == 1)
 			return (-4);
 		if (ft_time_to_eat(set_philo) == -4)

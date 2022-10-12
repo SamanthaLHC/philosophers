@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:16:26 by sle-huec          #+#    #+#             */
-/*   Updated: 2022/10/12 10:29:20 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:42:04 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	ft_isdigit(char c)
 
 void	ft_free_and_destroy(t_data *data)
 {
+	ft_destroy_mutexes(data);
 	free(data->philosophe);
 	free(data->mutex_fork_arr);
 	free(data->fork_available);
-	ft_destroy_mutexes(data);
 }
