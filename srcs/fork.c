@@ -6,7 +6,7 @@
 /*   By: sle-huec <sle-huec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:16:32 by samantha          #+#    #+#             */
-/*   Updated: 2022/10/12 11:59:12 by sle-huec         ###   ########.fr       */
+/*   Updated: 2022/10/12 13:44:21 by sle-huec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int	take_first_fork(int i_have_the_fork, pthread_mutex_t *fork,
 	{
 		if (set_philo->data->fork_available[set_philo->idx])
 		{
-			printf("%d %d has taken a fork (%d)\n",
-				ft_get_key_moment(set_philo->data), set_philo->idx + 1,
-				set_philo->idx + 1);
+			printf("%d %d has taken a fork\n",
+				ft_get_key_moment(set_philo->data), set_philo->idx + 1);
 			set_philo->data->fork_available[set_philo->idx] = 0;
 			i_have_the_fork = 1;
 		}
@@ -66,9 +65,8 @@ int	take_second_fork(int i_have_the_fork2, pthread_mutex_t *fork2,
 		if (set_philo->data->fork_available[(set_philo->idx + 1)
 				% set_philo->data->nb_of_philo])
 		{
-			printf("%d %d has taken a fork (%d)\n",
-				ft_get_key_moment(set_philo->data), set_philo->idx + 1,
-				(set_philo->idx + 1) % set_philo->data->nb_of_philo + 1);
+			printf("%d %d has taken a fork\n",
+				ft_get_key_moment(set_philo->data), set_philo->idx + 1);
 			set_philo->data->fork_available[(set_philo->idx + 1)
 				% set_philo->data->nb_of_philo] = 0;
 			i_have_the_fork2 = 1;
